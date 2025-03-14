@@ -18,20 +18,21 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var genderLabel: UILabel! // Gênero
 
     override func viewDidLoad() {
-          super.viewDidLoad()
-          displayCharacterDetails()
-      }
+            super.viewDidLoad()
+            print("viewDidLoad do DetailViewController")
+            displayCharacterDetails()
+        }
 
-      func displayCharacterDetails() {
-          guard let character = character else {
-              print("Nenhum personagem foi passado, aqui e DetailView e nao chegou personagem aqui")
-              return
-          }
-          print("Character: \(character.name), \(character.height), \(character.gender)")
+        func displayCharacterDetails() {
+            guard let character = character else {
+                print("Nenhum personagem foi passado, aqui e DetailView e nao chegou personagem aqui")
+                return
+            }
+            print("Character: \(character.name), \(character.height), \(character.gender)")
 
-          // Teste com dados hardcoded para garantir que as labels estão funcionando
-          nameLabel.text = "Nome: \(character.name)"
-          heightLabel.text = character.height.isEmpty ? "Altura: Não disponível" : "Altura: \(character.height) cm"
-          genderLabel.text = character.gender.isEmpty ? "Gênero: Não disponível" : "Gênero: \(character.gender)"
-      }
-  }
+            // Teste com dados hardcoded para garantir que as labels estão funcionando
+            nameLabel.text = "Nome: \(character.name)"
+            heightLabel.text = character.height.isEmpty ? "Altura: Não disponível" : "Altura: \(character.height) cm"
+            genderLabel.text = character.gender.isEmpty ? "Gênero: Não disponível" : "Gênero: \(character.gender)"
+        }
+    }
