@@ -9,6 +9,7 @@ import Foundation
 
 
 struct APIResponse: Decodable {
+    let next: String?  // O campo "next" da API
     let results: [Character]
 }
 
