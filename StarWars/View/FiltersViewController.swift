@@ -113,7 +113,10 @@ class FiltersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
     /// Retorna o título das opções disponíveis no PickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Gender.allCases[row].rawValue.capitalized
+        guard row < Gender.allCases.count else {
+            return nil // Caso o índice seja inválido, retorna nil
+        }
+        return Gender.allCases[row].descricaoEmPortugues // Exibe a descrição em português
     }
 
     /// Captura a opção selecionada pelo usuário e atualiza a variável `selectedGender`

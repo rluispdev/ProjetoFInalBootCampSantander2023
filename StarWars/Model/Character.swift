@@ -30,4 +30,16 @@ enum Gender: String, CaseIterable {
     case n_a = "n/a"  // Gênero não informado
     case none = "none"  // Nenhum gênero
     case hermaphrodite = "hermaphrodite"  // Hermafrodita
+    
+    // Propriedade computada para retornar o nome em português
+    var descricaoEmPortugues: String {
+        switch self {
+        case .all: return "Todos"
+        case .male: return "Masculino"
+        case .female: return "Feminino"
+        case .n_a: return "Não Informado"
+        case .none: return "Nenhum"
+        case .hermaphrodite: return "Hermafrodita"
+        }
+    }
 }

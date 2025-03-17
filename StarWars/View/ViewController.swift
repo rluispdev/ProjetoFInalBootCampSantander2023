@@ -66,13 +66,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func didChangeFilter(gender: Gender) {
         viewModel.currentFilter = gender // Isso já aciona applyFilter()
 
-        // Atualiza o subtítulo com o filtro selecionado
+        // Atualiza o subtítulo com o filtro selecionado em português
         if gender == .all {
             subtitleLabel.text = "Lista de Personagens"
         } else {
-            subtitleLabel.text = "Lista de Personagens - \(gender.rawValue.capitalized)"
+            subtitleLabel.text = "Gênero - \(gender.descricaoEmPortugues)" // Exibe o gênero em português
         }
     }
-    
     
     }
