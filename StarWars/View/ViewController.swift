@@ -12,6 +12,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
     private var viewModel = CharacterViewModel()
         
         override func viewDidLoad() {
@@ -60,11 +62,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 detailVC.character = selectedCharacter
             }
         }
-        
-        func didChangeFilter(gender: Gender) {
-            viewModel.currentFilter = gender
-        }
     
+    func didChangeFilter(gender: Gender) {
+        viewModel.currentFilter = gender // Isso já aciona applyFilter()
+
+        // Atualiza o subtítulo com o filtro selecionado
+        if gender == .all {
+            subtitleLabel.text = "Lista de Personagens"
+        } else {
+            subtitleLabel.text = "Lista de Personagens - \(gender.rawValue.capitalized)"
+        }
+    }
     
     
     }

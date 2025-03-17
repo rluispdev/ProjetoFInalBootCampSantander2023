@@ -41,7 +41,7 @@ class FiltersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
         // Configuração do título estilizado
         titleLabel = UILabel()
-        titleLabel.text = "Escolha um Filtro"
+        titleLabel.text = "Filtrar por gênero:"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel.textColor = UIColor.black
         titleLabel.textAlignment = .center
