@@ -20,7 +20,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             super.viewDidLoad()
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filtrar", style: .plain, target: self, action: #selector(showFilters))
-            
+            navigationItem.rightBarButtonItem?.tintColor = .systemMint
+            navigationController?.navigationBar.tintColor = UIColor.systemMint
             tableView.dataSource = self
             tableView.delegate = self
             
@@ -38,6 +39,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             filtersVC.delegate = self
             filtersVC.selectedGender = viewModel.currentFilter
             navigationController?.pushViewController(filtersVC, animated: true)
+           
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

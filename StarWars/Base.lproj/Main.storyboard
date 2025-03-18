@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Star Wars-->
+        <!--Elenco Star Wars-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,7 +47,7 @@
                             <constraint firstAttribute="bottom" secondItem="ZeU-l2-nBR" secondAttribute="bottom" id="vQF-nt-JEo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Star Wars" id="8Ht-Dr-5U7"/>
+                    <navigationItem key="navigationItem" title="Elenco Star Wars" id="8Ht-Dr-5U7"/>
                     <connections>
                         <outlet property="subtitleLabel" destination="ahs-SN-JtI" id="zfR-tN-eIe"/>
                         <outlet property="tableView" destination="ZeU-l2-nBR" id="6GT-Ci-SIf"/>
@@ -178,7 +178,7 @@
                             <constraint firstItem="sq0-R9-xtD" firstAttribute="leading" secondItem="R4i-1G-3yh" secondAttribute="leading" constant="32" id="yoj-8f-R3b"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Saiba +" id="Ptc-dH-G6u"/>
+                    <navigationItem key="navigationItem" title="Saiba +" style="browser" id="Ptc-dH-G6u"/>
                     <connections>
                         <outlet property="birthYearLabel" destination="sq0-R9-xtD" id="3gv-mt-lgJ"/>
                         <outlet property="eyeColorLabel" destination="L1H-T7-2D8" id="S0f-PQ-mkQ"/>
