@@ -20,19 +20,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             super.viewDidLoad()
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filtrar", style: .plain, target: self, action: #selector(showFilters))
-            navigationItem.rightBarButtonItem?.tintColor = .systemMint
-            navigationController?.navigationBar.tintColor = UIColor.systemMint
-            tableView.dataSource = self
-            tableView.delegate = self
-            
-            viewModel.onDataUpdated = { [weak self] in
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
+                    navigationItem.rightBarButtonItem?.tintColor = .systemMint
+                    navigationController?.navigationBar.tintColor = UIColor.systemMint
+                    tableView.dataSource = self
+                    tableView.delegate = self
+
+                    // Tela de carregamento
+                    let activityIndicator = UIActivityIndicatorView(style: .large)
+                    activityIndicator.center = view.center
+                    activityIndicator.startAnimating()
+                    view.addSubview(activityIndicator)
+
+                    // Carrega os dados
+                    viewModel.onDataUpdated = { [weak self] in
+                        DispatchQueue.main.async {
+                            self?.tableView.reloadData()
+                            activityIndicator.stopAnimating()
+                            activityIndicator.removeFromSuperview()
+                        }
+                    }
+
+                    viewModel.fetchData()
                 }
-            }
-            
-            viewModel.fetchData()
-        }
         
         @objc func showFilters() {
             let filtersVC = FiltersViewController()

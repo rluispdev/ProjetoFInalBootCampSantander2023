@@ -6,7 +6,6 @@
 //
 
 import UIKit
- 
 
 // MARK: - Protocolo para comunicação entre ViewControllers
 
@@ -16,13 +15,14 @@ protocol FiltersViewControllerDelegate: AnyObject {
 
 // MARK: - Classe FiltersViewController
 
-class FiltersViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class FiltersViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // MARK: - Propriedades
 
     var genderPickerView: UIPickerView! // Componente para selecionar o gênero
     var filterButton: UIButton!         // Botão para aplicar o filtro
     var titleLabel: UILabel!            // Título da tela
+    var filterImageView: UIImageView!   // Imagem a ser exibida antes do filtro
     
     var selectedGender: Gender = .all   // Filtro selecionado (padrão: "Todos")
     weak var delegate: FiltersViewControllerDelegate? // Delegate para passar o filtro de volta à tela principal
@@ -37,7 +37,12 @@ class FiltersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     // MARK: - Configuração da Interface
 
     func setupUI() {
-        self.view.backgroundColor = UIColor.white // Define um fundo escuro para um visual mais futurista
+        self.view.backgroundColor = UIColor.white // Define o fundo da tela
+
+        // Configuração da imagem
+        filterImageView = UIImageView(image: UIImage(named: "StarWarsLogo2")) // Substitua "StarWarsLogo2" pelo nome da sua imagem
+        filterImageView.contentMode = .scaleAspectFit
+        filterImageView.translatesAutoresizingMaskIntoConstraints = false
 
         // Configuração do título estilizado
         titleLabel = UILabel()
@@ -76,20 +81,30 @@ class FiltersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         filterButton.translatesAutoresizingMaskIntoConstraints = false
         
         // Adiciona os elementos à view
+        self.view.addSubview(filterImageView)
         self.view.addSubview(titleLabel)
         self.view.addSubview(genderPickerView)
         self.view.addSubview(filterButton)
         
         // MARK: - Definição de Constraints para Layout Responsivo
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            // Configuração da imagem
+            filterImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            filterImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            filterImageView.widthAnchor.constraint(equalToConstant: 150),  // Ajuste o tamanho conforme necessário
+            filterImageView.heightAnchor.constraint(equalToConstant: 50),
             
+            // Configuração do título
+            titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: filterImageView.bottomAnchor, constant: 10),
+            
+            // Configuração do UIPickerView
             genderPickerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            genderPickerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            genderPickerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
             genderPickerView.widthAnchor.constraint(equalToConstant: 300),
             genderPickerView.heightAnchor.constraint(equalToConstant: 150),
             
+            // Configuração do botão
             filterButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             filterButton.topAnchor.constraint(equalTo: genderPickerView.bottomAnchor, constant: 40),
             filterButton.widthAnchor.constraint(equalToConstant: 200),
@@ -133,3 +148,4 @@ class FiltersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         navigationController?.popViewController(animated: true) // Retorna à tela anterior
     }
 }
+
